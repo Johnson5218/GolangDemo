@@ -11,5 +11,7 @@ func main() {
 		temp = r.Int31()
 		fmt.Println(temp)
 	}
-
+	
+		fmt.Println("**********************")
+		fmt.Println(temp)
 }

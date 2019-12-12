@@ -12,6 +12,6 @@ func main() {
 	r := rand.New(rand.NewSource(99))
 
 	for i := 0; i < 20; i++ {
-		fmt.Println(r.Int31())
+		fmt.Println(r.Int()%15000000)
 	}
 }
