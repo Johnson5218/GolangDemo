@@ -1,13 +1,14 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
 	"text/template"
 )
 
 func main() {
 	// Define a template.
+	/*
 	content := `
 Dear {{.Name}},
 {{if .Attended}}
@@ -27,6 +28,21 @@ Josie
 		Name, Gift string
 		Attended   bool
 	}
+*/
+letter := `您的快递预计{{ .Str1 }}到达`
+	
+	type Rec struct {
+		Str1 string
+	}
+	rec := Rec{"2019年12月16日16:53:07"}
+
+	t := template.Must(template.New("letter").Parse(letter))
+	err := t.Execute(os.Stdout, rec)
+	if err != nil {
+		fmt.Println(err)
+	}
+	
+/*
 	var recipients = []Recipient{
 		{"Aunt Mildred", "bone china tea set", true},
 		{"Uncle John", "moleskin pants", false},
@@ -43,5 +59,5 @@ Josie
 			log.Println("executing template:", err)
 		}
 	}
-
+*/
 }
