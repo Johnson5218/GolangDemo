@@ -1,9 +1,9 @@
 package main
 
 import (
-	"log"
-	"os"
+	"bytes"
 	"text/template"
+	"fmt"
 )
 
 func main() {
@@ -22,11 +22,12 @@ func main() {
 
 	// Create a new template and parse the letter into it.
 	t := template.Must(template.New("letter").Parse(letter))
-
 	// Execute the template for each recipient.
-		err := t.Execute(os.Stdout, recipients)
-		if err != nil {
-			log.Println("executing template:", err)
-		}
-
+	fmt.Println(letter)	
+	buf := new(bytes.Buffer)
+	err := t.Execute(buf, recipients)
+		// import "bytes"
+	buf.String() // returns a string of what was written to it
+	fmt.Println(buf)
+	fmt.Println(err)
 }
